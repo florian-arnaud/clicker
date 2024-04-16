@@ -11,10 +11,10 @@ function saveClicksToLocalStorage() {
 function buyBonus(cost, buyButton) {
   // Check if enough clicks are available
   if (totalClicks < cost) {
-    // Set button to indicate insufficient clicks (using a class for styling)
+    // Set button to indicate insufficient clicks
     buyButton.classList.add('btn-danger');
 
-    // Reset button style after a short delay (using a more descriptive variable)
+    // Reset button style after a short delay
     setTimeout(() => {
       buyButton.classList.remove('btn-danger');
       buyButton.classList.add('btn-success'); // Assuming success state class
@@ -43,12 +43,10 @@ function updateAutoClick() {
 function updateWorkers() {
   // Update time period display
   const timePeriodElement = document.getElementById("timePeriod");
-  timePeriodElement.textContent = (clickRate / 1000.0).toFixed(2); // Convert to seconds, fix to 2 decimals
+  timePeriodElement.textContent = (clickRate / 1000.0).toFixed(2);
 
-  // Clear previous auto-click interval
   clearInterval(autoClickInterval);
 
-  // Set up new auto-click interval
   autoClickInterval = setInterval(() => {
     totalClicks += autoClicks;
     updateTotalClicks();

@@ -34,27 +34,17 @@ document.getElementById("click").onclick = function () {
 document.getElementById("buyClick").onclick = function () {
     // Check if enough clicks are available for purchase
     if (!buyBonus(cost, this)) {
-        return; // Exit if not enough clicks
+        return;
     }
 
-    // Increase auto-clicks by 1
     autoClicks++;
     saveAutoClickerBonusToLocalStorage()
-
-    // Calculate new cost based on exponential growth
     cost = Math.pow(2, autoClicks);
-
-    // Update total clicks display
     updateTotalClicks();
-
-    // Update clicks per second display
     clicksPerSecondElement.textContent = autoClicks;
 
-    // Update button text to show new cost
     this.textContent = "Buy for " + cost;
     console.log(cost);
-
-    // Update autoclicker level display
     autoclickerLevelElement.textContent = "Level " + autoClicks; 
 };
 updateWorkers()
