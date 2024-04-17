@@ -22,7 +22,7 @@ console.log(autoClicks);
 if (storedAutoClicks) {
     console.log(localStorage);
     updateAutoClick()
-    autoClicks = parseInt(storedClicks, 10);
+    autoClicks = parseInt(storedAutoClicks, 10);
 }
 
 document.getElementById("click").onclick = function () {
