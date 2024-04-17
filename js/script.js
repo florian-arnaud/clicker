@@ -13,7 +13,7 @@ let clickIncrement = 1; // Number of clicks per click
 const storedClicks = localStorage.getItem("totalClicks");
 const storedAutoClicks = localStorage.getItem("Autoclicker");
 if (storedClicks) {
-    totalClicks = parseInt(storedClicks, 10); 
+    totalClicks = parseInt(storedClicks, 10);
     updateTotalClicks()
 }
 
@@ -25,13 +25,14 @@ if (storedAutoClicks) {
     autoClicks = parseInt(storedAutoClicks, 10);
 }
 
-document.getElementById("click").onclick = function () {
+
+document.getElementById("click").addEventListener("click", function () {
     totalClicks = parseFloat(totalClicks) + parseFloat(clickIncrement);
     saveClicksToLocalStorage();
     updateTotalClicks();
-};
+})
 
-document.getElementById("buyClick").onclick = function () {
+document.getElementById("buyClick").addEventListener("click", function () {
     // Check if enough clicks are available for purchase
     if (!buyBonus(cost, this)) {
         return;
@@ -45,6 +46,7 @@ document.getElementById("buyClick").onclick = function () {
 
     this.textContent = "Buy for " + cost;
     console.log(cost);
-    autoclickerLevelElement.textContent = "Level " + autoClicks; 
-};
+    autoclickerLevelElement.textContent = "Level " + autoClicks;
+})
+
 updateWorkers()
