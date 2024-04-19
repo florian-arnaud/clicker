@@ -32,7 +32,7 @@ document.getElementById("click").addEventListener("click", function () {
     updateTotalClicks();
 })
 
-document.getElementById("buyClick").addEventListener("click", function () {
+document.getElementById("autoclickButton").addEventListener("click", function () {
     // Check if enough clicks are available for purchase
     if (!buyBonus(cost, this)) {
         return;

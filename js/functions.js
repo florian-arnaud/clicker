@@ -35,7 +35,7 @@ function saveAutoClickerBonusToLocalStorage() {
 }
 
 function updateAutoClick() {
-  document.getElementById("buyClick").textContent = "Buy for " + (parseInt(localStorage.getItem("Autoclicker Cost"),10));
+  document.getElementById("autoclickButton").textContent = "Buy for " + (parseInt(localStorage.getItem("Autoclicker Cost"),10));
   clicksPerSecondElement.textContent = parseInt(localStorage.getItem("Autoclicker"))
   autoclickerLevelElement.textContent = "Level " + localStorage.getItem("Autoclicker")
 
