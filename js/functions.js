@@ -3,9 +3,9 @@ function updateTotalClicks() {
   clicksElement.textContent = localStorage.getItem("totalClicks");
 }
 
+
 function saveClicksToLocalStorage() {
   localStorage.setItem("totalClicks", totalClicks);
-
 }
 
 function buyBonus(cost, buyButton) {
@@ -30,14 +30,19 @@ function buyBonus(cost, buyButton) {
 }
 
 function saveAutoClickerBonusToLocalStorage() {
-  localStorage.setItem("Autoclicker", autoClicks)
-  localStorage.setItem("Autoclicker Cost", cost)
+  localStorage.setItem("autoClicker", autoClicks)
+  localStorage.setItem("autoClicker Cost", cost)
+}
+
+function saveSpeedUpgradeBonusToLocalStorage() {
+  localStorage.setItem("speedUpgrade", speedUpgrade)
+  localStorage.setItem("speedUpgrade Cost", cost)
 }
 
 function updateAutoClick() {
-  document.getElementById("autoclickButton").textContent = "Buy for " + (parseInt(localStorage.getItem("Autoclicker Cost"),10));
-  clicksPerSecondElement.textContent = parseInt(localStorage.getItem("Autoclicker"))
-  autoclickerLevelElement.textContent = "Level " + localStorage.getItem("Autoclicker")
+  document.getElementById("autoclickButton").textContent = "Buy for " + (parseInt(localStorage.getItem("autoClicker Cost"),10));
+  clicksPerSecondElement.textContent = parseInt(localStorage.getItem("autoClicker"))
+  autoclickerLevelElement.textContent = "Level " + localStorage.getItem("autoClicker")
 
 }
 function updateWorkers() {
