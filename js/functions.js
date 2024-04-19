@@ -29,14 +29,15 @@ function buyBonus(cost, buyButton) {
   return true;
 }
 
-function saveAutoClickerBonusToLocalStorage() {
+function saveAutoClickerBonusToLocalStorage(cost) {
   localStorage.setItem("autoClicker", autoClicks)
   localStorage.setItem("autoClicker Cost", cost)
 }
 
-function saveSpeedUpgradeBonusToLocalStorage() {
+function saveSpeedUpgradeBonusToLocalStorage(cost) {
   localStorage.setItem("speedUpgrade", speedUpgrade)
   localStorage.setItem("speedUpgrade Cost", cost)
+  localStorage.setItem("clickRate", clickRate)
 }
 
 function updateAutoClick() {
