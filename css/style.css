@@ -1,12 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
 .container {
-    padding:5px 30px 30px 30px;
-    margin:30px;
-    border:solid white 1px;
-    border-radius:5px;
-    /*background-color:#e6e6e6;*/
-    text-align:center;
-  }
-  
-  .btn-success, .btn-danger {
-    width:200px;
-  }
+    min-height: calc(100% - 100px); /* Réduire la hauteur de la page */
+    padding: 20px; /* Augmenter les rembourrages */
+    margin: 10px;
+    border: solid white 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container-gauche,
+.container-droite {
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+
+.btn-success,
+.btn-danger {
+    width: 100%;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px; /* Augmenter les rembourrages */
+}
+
+h1, h3 {
+    margin-bottom: 20px; /* Réduire l'espace entre les titres et le contenu suivant */
+}
+
+p {
+    margin-bottom: 10px; /* Réduire l'espace entre les paragraphes */
+}
