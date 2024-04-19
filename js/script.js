@@ -39,7 +39,7 @@ if(storedIncrementClicksLevel)
 {
     clickIncrement = localStorage.getItem("clickIncrement")
     clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement")
-    document.getElementById("increaseClicks").textContent = "Buy for " + localStorage.getItem("clickIncrement Cost")
+    document.getElementById("clickIncrement").textContent = "Buy for " + localStorage.getItem("clickIncrement Cost")
 
 }
 document.getElementById("click").addEventListener("click", function () {
@@ -80,7 +80,7 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
     speedLevelElement.textContent = "Level " + speedUpgrade;
 })
 
-document.getElementById("increaseClicks").addEventListener("click", function () {
+document.getElementById("clickIncrement").addEventListener("click", function () {
     localStorage.getItem("clickIncrement Cost")? this.cost = localStorage.getItem("clickIncrement Cost") : this.cost = 50
     if (!buyBonus(this.cost, this)) {
         return;
