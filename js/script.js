@@ -49,7 +49,7 @@ document.getElementById("click").addEventListener("click", function () {
 })
 
 document.getElementById("autoclickButton").addEventListener("click", function () {
-    if (this.cost == undefined) this.cost = 1
+    localStorage.getItem("autoClicker Cost")? this.cost = localStorage.getItem("autoClicker Cost") : this.cost = 1
     console.log(this.cost);
     // Check if enough clicks are available for purchase
     if (!buyBonus(this.cost, this)) {
