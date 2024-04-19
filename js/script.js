@@ -2,7 +2,7 @@
 const clicksElement = document.getElementById("totalClicks");
 const clicksPerSecondElement = document.getElementById("clicksPerSecond");
 const timePeriodElement = document.getElementById("timePeriod");
-
+const clickIncrementLevelElement = document.getElementById("clickIncrementLevel")
 const autoclickerLevelElement = document.getElementById("autoclickerLevel");
 const speedLevelElement = document.getElementById("speedLevel")
 let totalClicks = 0
@@ -11,11 +11,11 @@ let cost = 1 // This cost should increase exponentially
 let speedUpgrade = 0; // Level of the speed up upgrade
 let clickRate = 1000; // Milliseconds between each autoclick
 let autoClickInterval; // Storing the interval for updating
-let clickIncrement = 1; // Number of clicks per click
+let clickIncrement = 0; // Number of clicks per click
 const storedClicks = localStorage.getItem("totalClicks");
 const storedAutoClicks = localStorage.getItem("autoClicker");
 const storedSpeedUpgrade = localStorage.getItem("speedUpgrade")
-
+const storedIncrementClicksLevel = localStorage.getItem("clickIncrement")
 /* Loading progression from local storage*/
 if (storedClicks) {
     totalClicks = parseInt(storedClicks, 10);
@@ -35,8 +35,13 @@ if (storedSpeedUpgrade) {
     clickRate = localStorage.getItem("clickRate");
 }
 
+if(storedIncrementClicksLevel)
+{
+    clickIncrement = localStorage.getItem("clickIncrement")
+    clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement")
+}
 document.getElementById("click").addEventListener("click", function () {
-    totalClicks = parseFloat(totalClicks) + parseFloat(clickIncrement);
+    totalClicks = totalClicks +1 + parseInt(clickIncrement)
     saveClicksToLocalStorage();
     updateTotalClicks();
 })
@@ -49,7 +54,7 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
         return;
     }
 
-    autoClicks++;
+    autoClicks++
     saveAutoClickerBonusToLocalStorage(this.cost)
     this.cost = Math.pow(2, autoClicks);
     updateTotalClicks();
@@ -71,11 +76,21 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
     clickRate = clickRate * 0.90;
     saveSpeedUpgradeBonusToLocalStorage(this.cost)
     updateWorkers()
-    document.getElementById("speedUpgrade").textContent = "Buy for " + this.cost
-    updateTotalClicks();
     this.textContent = "Buy for " + localStorage.getItem("speedUpgrade Cost");
     speedLevelElement.textContent = "Level " + speedUpgrade;
 })
 
+document.getElementById("increaseClicks").addEventListener("click", function () {
+    if (this.cost == undefined) this.cost = 100
+    if (!buyBonus(this.cost, this)) {
+        return;
+    }
+    clickIncrement++;
+    this.cost = Math.pow(2, clickIncrement) *100;
+    saveClickIncrementToLocalStorage(this.cost)
+    updateWorkers()
+    this.textContent = "Buy for " + localStorage.getItem("clickIncrement Cost");
+    clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement");
 
+})
 updateWorkers()

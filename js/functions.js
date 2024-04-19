@@ -40,6 +40,10 @@ function saveSpeedUpgradeBonusToLocalStorage(cost) {
   localStorage.setItem("clickRate", clickRate)
 }
 
+function saveClickIncrementToLocalStorage(cost) {
+  localStorage.setItem("clickIncrement", clickIncrement)
+  localStorage.setItem("clickIncrement Cost", cost)
+}
 function updateAutoClick() {
   document.getElementById("autoclickButton").textContent = "Buy for " + (parseInt(localStorage.getItem("autoClicker Cost"),10));
   clicksPerSecondElement.textContent = parseInt(localStorage.getItem("autoClicker"))
