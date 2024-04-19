@@ -66,13 +66,13 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
 })
 
 document.getElementById("speedUpgrade").addEventListener("click", function () {
-    if (this.cost == undefined) this.cost = 100
+    localStorage.getItem("speedUpgrade Cost")? this.cost = localStorage.getItem("speedUpgrade Cost") : this.cost = 100
     // Check if enough clicks are available for purchase
     if (!buyBonus(this.cost, this)) {
         return;
     }
     speedUpgrade++;
-    this.cost = Math.pow(2, speedUpgrade) *100;
+    this.cost = Math.pow(2, speedUpgrade) * this.cost;
     clickRate = clickRate * 0.90;
     saveSpeedUpgradeBonusToLocalStorage(this.cost)
     updateWorkers()
@@ -86,9 +86,7 @@ document.getElementById("increaseClicks").addEventListener("click", function () 
         return;
     }
     clickIncrement++;
-    console.log("Cout avant: " +this.cost);
     this.cost = Math.pow(2, clickIncrement) * this.cost;
-    console.log("Cout après:" + this.cost);
     saveClickIncrementToLocalStorage(this.cost)
     console.log(clickIncrement);
     updateWorkers()
