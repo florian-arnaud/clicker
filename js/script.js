@@ -39,6 +39,8 @@ if(storedIncrementClicksLevel)
 {
     clickIncrement = localStorage.getItem("clickIncrement")
     clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement")
+    document.getElementById("increaseClicks").textContent = "Buy for " + localStorage.getItem("clickIncrement Cost")
+
 }
 document.getElementById("click").addEventListener("click", function () {
     totalClicks = totalClicks +1 + parseInt(clickIncrement)
@@ -59,9 +61,7 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
     this.cost = Math.pow(2, autoClicks);
     updateTotalClicks();
     clicksPerSecondElement.textContent = autoClicks;
-
     this.textContent = "Buy for " + localStorage.getItem("autoClicker Cost")
-
     autoclickerLevelElement.textContent = "Level " + autoClicks;
 })
 
@@ -81,15 +81,18 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
 })
 
 document.getElementById("increaseClicks").addEventListener("click", function () {
-    if (this.cost == undefined) this.cost = 100
+    localStorage.getItem("clickIncrement Cost")? this.cost = localStorage.getItem("clickIncrement Cost") : this.cost = 20
     if (!buyBonus(this.cost, this)) {
         return;
     }
     clickIncrement++;
-    this.cost = Math.pow(2, clickIncrement) *100;
+    console.log("Cout avant: " +this.cost);
+    this.cost = Math.pow(2, clickIncrement) * this.cost;
+    console.log("Cout après:" + this.cost);
     saveClickIncrementToLocalStorage(this.cost)
+    console.log(clickIncrement);
     updateWorkers()
-    this.textContent = "Buy for " + localStorage.getItem("clickIncrement Cost");
+    this.textContent = "Buy for " + this.cost;
     clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement");
 
 })
