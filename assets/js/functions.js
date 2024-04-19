@@ -28,6 +28,34 @@ function buyBonus(cost, buyButton) {
   totalClicks -= cost;
   return true;
 }
+function loadLocalStorage() {
+  /* Loading progression from local storage*/
+if (storedClicks) {
+  totalClicks = parseInt(storedClicks, 10);
+  updateTotalClicks()
+}
+
+if (storedAutoClicks) {
+  autoClicks = parseInt(storedAutoClicks, 10);
+  updateAutoClick()
+
+}
+
+if (storedSpeedUpgrade) {
+  speedUpgrade = parseInt(storedSpeedUpgrade, 10)
+  document.getElementById("speedUpgrade").textContent = "Buy for " + localStorage.getItem("speedUpgrade Cost")
+  speedLevelElement.textContent = "Level " + localStorage.getItem("speedUpgrade")
+  clickRate = localStorage.getItem("clickRate");
+}
+
+if(storedIncrementClicksLevel)
+{
+  clickIncrement = localStorage.getItem("clickIncrement")
+  clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement")
+  document.getElementById("clickIncrement").textContent = "Buy for " + localStorage.getItem("clickIncrement Cost")
+
+}
+}
 
 function saveAutoClickerBonusToLocalStorage(cost) {
   localStorage.setItem("autoClicker", autoClicks)
