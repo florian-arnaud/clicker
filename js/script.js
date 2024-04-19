@@ -61,7 +61,7 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
 })
 
 document.getElementById("speedUpgrade").addEventListener("click", function () {
-    if (this.cost == undefined) this.cost = 50
+    if (this.cost == undefined) this.cost = 100
     // Check if enough clicks are available for purchase
     if (!buyBonus(this.cost, this)) {
         return;
@@ -76,5 +76,6 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
     this.textContent = "Buy for " + localStorage.getItem("speedUpgrade Cost");
     speedLevelElement.textContent = "Level " + speedUpgrade;
 })
+
 
 updateWorkers()
