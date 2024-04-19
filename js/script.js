@@ -49,7 +49,7 @@ document.getElementById("click").addEventListener("click", function () {
 })
 
 document.getElementById("autoclickButton").addEventListener("click", function () {
-    localStorage.getItem("autoClicker Cost")? this.cost = localStorage.getItem("autoClicker Cost") : this.cost = 1
+    localStorage.getItem("autoClicker Cost")? this.cost = localStorage.getItem("autoClicker Cost") : this.cost = 10
     console.log(this.cost);
     // Check if enough clicks are available for purchase
     if (!buyBonus(this.cost, this)) {
@@ -57,8 +57,8 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
     }
 
     autoClicks++
+    this.cost = Math.round(Math.pow(1.20, autoClicks) * this.cost);
     saveAutoClickerBonusToLocalStorage(this.cost)
-    this.cost = Math.pow(2, autoClicks);
     updateTotalClicks();
     clicksPerSecondElement.textContent = autoClicks;
     this.textContent = "Buy for " + localStorage.getItem("autoClicker Cost")
@@ -72,7 +72,7 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
         return;
     }
     speedUpgrade++;
-    this.cost = Math.pow(2, speedUpgrade) * this.cost;
+    this.cost = Math.round(Math.pow(1.20, speedUpgrade) * this.cost);
     clickRate = clickRate * 0.90;
     saveSpeedUpgradeBonusToLocalStorage(this.cost)
     updateWorkers()
@@ -81,12 +81,12 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
 })
 
 document.getElementById("increaseClicks").addEventListener("click", function () {
-    localStorage.getItem("clickIncrement Cost")? this.cost = localStorage.getItem("clickIncrement Cost") : this.cost = 20
+    localStorage.getItem("clickIncrement Cost")? this.cost = localStorage.getItem("clickIncrement Cost") : this.cost = 50
     if (!buyBonus(this.cost, this)) {
         return;
     }
     clickIncrement++;
-    this.cost = Math.pow(2, clickIncrement) * this.cost;
+    this.cost = Math.round(Math.pow(1.20, clickIncrement) * this.cost);
     saveClickIncrementToLocalStorage(this.cost)
     console.log(clickIncrement);
     updateWorkers()
