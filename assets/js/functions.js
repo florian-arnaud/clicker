@@ -45,7 +45,7 @@ function saveClickIncrementToLocalStorage(cost) {
   localStorage.setItem("clickIncrement Cost", cost)
 }
 function updateAutoClick() {
-  document.getElementById("autoclickButton").textContent = "Buy for " + (parseInt(localStorage.getItem("autoClicker Cost"),10));
+  document.getElementById("autoclickButton").textContent = "Acquérir pour " + (parseInt(localStorage.getItem("autoClicker Cost"),10));
   clicksPerSecondElement.textContent = parseInt(localStorage.getItem("autoClicker"))
   autoclickerLevelElement.textContent = "Level " + localStorage.getItem("autoClicker")
 

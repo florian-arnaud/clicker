@@ -30,7 +30,7 @@ if (storedAutoClicks) {
 
 if (storedSpeedUpgrade) {
     speedUpgrade = parseInt(storedSpeedUpgrade, 10)
-    document.getElementById("speedUpgrade").textContent = "Buy for " + localStorage.getItem("speedUpgrade Cost")
+    document.getElementById("speedUpgrade").textContent = "Acquérir pour " + localStorage.getItem("speedUpgrade Cost")
     speedLevelElement.textContent = "Level " + localStorage.getItem("speedUpgrade")
     clickRate = localStorage.getItem("clickRate");
 }
@@ -39,7 +39,7 @@ if(storedIncrementClicksLevel)
 {
     clickIncrement = localStorage.getItem("clickIncrement")
     clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement")
-    document.getElementById("clickIncrement").textContent = "Buy for " + localStorage.getItem("clickIncrement Cost")
+    document.getElementById("clickIncrement").textContent = "Acquérir pour " + localStorage.getItem("clickIncrement Cost")
 
 }
 document.getElementById("click").addEventListener("click", function () {
@@ -61,7 +61,7 @@ document.getElementById("autoclickButton").addEventListener("click", function ()
     saveAutoClickerBonusToLocalStorage(this.cost)
     updateTotalClicks();
     clicksPerSecondElement.textContent = autoClicks;
-    this.textContent = "Buy for " + localStorage.getItem("autoClicker Cost")
+    this.textContent = "Acquérir pour " + localStorage.getItem("autoClicker Cost")
     autoclickerLevelElement.textContent = "Level " + autoClicks;
 })
 
@@ -76,7 +76,7 @@ document.getElementById("speedUpgrade").addEventListener("click", function () {
     clickRate = clickRate * 0.90;
     saveSpeedUpgradeBonusToLocalStorage(this.cost)
     updateWorkers()
-    this.textContent = "Buy for " + localStorage.getItem("speedUpgrade Cost");
+    this.textContent = "Acquérir pour " + localStorage.getItem("speedUpgrade Cost");
     speedLevelElement.textContent = "Level " + speedUpgrade;
 })
 
@@ -90,7 +90,7 @@ document.getElementById("clickIncrement").addEventListener("click", function () 
     saveClickIncrementToLocalStorage(this.cost)
     console.log(clickIncrement);
     updateWorkers()
-    this.textContent = "Buy for " + this.cost;
+    this.textContent = "Acquérir pour " + this.cost;
     clickIncrementLevelElement.textContent = "Level " + localStorage.getItem("clickIncrement");
 
 })
